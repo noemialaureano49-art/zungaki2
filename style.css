@@ -761,6 +761,20 @@ body.modo-escuro .card {
     color: #f5f5f5;
 }
 
+/* ===== TEXTO BRANCO NO DARK MODE ===== */
+body.modo-escuro p,
+body.modo-escuro span,
+body.modo-escuro small,
+body.modo-escuro li,
+body.modo-escuro label {
+    color: #ffffff;
+}
+
+/* Links continuam visíveis */
+body.modo-escuro a {
+    color: #ffffff;
+}
+
 /* ===== CARROSSEL DE PRODUTOS ===== */
 .carousel {
     display: flex;
