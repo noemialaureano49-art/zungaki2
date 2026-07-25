@@ -719,6 +719,16 @@ body.modo-escuro {
     color: #eee;
 }
 
+/* Texto corrido, em geral: cinza-claro (nunca branco puro — evita ofuscar) */
+body.modo-escuro p {
+    color: #eee;
+}
+
+body.modo-escuro a {
+    color: #eee;
+}
+
+/* ----- Header ----- */
 body.modo-escuro header {
     background: #1e1c18;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
@@ -728,10 +738,37 @@ body.modo-escuro header nav a {
     color: #eee;
 }
 
+body.modo-escuro header nav a:hover {
+    color: #ff6a00;
+}
+
+body.modo-escuro header p {
+    color: #eee;
+}
+
+body.modo-escuro .menu-toggle span {
+    background: #ff9a3c;
+}
+
+body.modo-escuro .dark-toggle {
+    border-color: #3a352c;
+}
+
+/* ----- Hero ----- */
+body.modo-escuro .centro {
+    background: #1e1c18;
+}
+
+body.modo-escuro .centro-text p {
+    color: #ccc;
+}
+
+/* ----- Vantagens / Produtos / Feedback / Contacto / Redes ----- */
 body.modo-escuro .vantagens,
 body.modo-escuro .produtos,
 body.modo-escuro .feedback,
-body.modo-escuro .contacto-secao {
+body.modo-escuro .contacto-secao,
+body.modo-escuro .redes {
     background: #1e1c18;
     color: #eee;
 }
@@ -739,6 +776,7 @@ body.modo-escuro .contacto-secao {
 body.modo-escuro .vantagens article,
 body.modo-escuro .produto,
 body.modo-escuro .card,
+body.modo-escuro .comentario,
 body.modo-escuro .contacto-form-box input,
 body.modo-escuro .contacto-form-box textarea {
     background: #26221c;
@@ -755,30 +793,76 @@ body.modo-escuro .categorias h2,
 body.modo-escuro .produtos h2,
 body.modo-escuro .feedback-header h2,
 body.modo-escuro .contacto-form-box h2,
+body.modo-escuro .contacto-mapa-box h2,
+body.modo-escuro .redes h2,
 body.modo-escuro .produto h3,
 body.modo-escuro .card {
     color: #f5f5f5;
 }
 
-/* ===== TEXTO BRANCO NO DARK MODE ===== */
-body.modo-escuro header p strong {
-    color: #ffffff;
-}
-body.modo-escuro p {
-    color: #ffffff;
+body.modo-escuro .vantagens article p,
+body.modo-escuro .produto p,
+body.modo-escuro .feedback-header p,
+body.modo-escuro .comentario p,
+body.modo-escuro .redes p,
+body.modo-escuro .campo label {
+    color: #ccc;
 }
 
-/* Exceções: header, aviso e políticas */
-body.modo-escuro header p,
+body.modo-escuro .comentario strong {
+    color: #fff;
+}
+
+body.modo-escuro .partilhar-titulo {
+    color: #eee;
+}
+
+body.modo-escuro .partilhar-links button {
+    background: #26221c;
+    border-color: #3a352c;
+    color: #eee;
+}
+
+body.modo-escuro .redes-links a {
+    color: #fff;
+}
+
+body.modo-escuro #mapa-google {
+    background: #26221c;
+}
+
+body.modo-escuro .mapa-fallback {
+    color: #aaa;
+}
+
+/* ----- Pop-up de Termos/Privacidade (fundo claro fixo → precisa de versão própria) ----- */
+body.modo-escuro .popup-overlay {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+body.modo-escuro .popup-box {
+    background: #1e1c18;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+}
+
+body.modo-escuro .popup-box h2 {
+    color: #ff9a3c;
+}
+
+body.modo-escuro .popup-box p {
+    color: #eee;
+}
+
+body.modo-escuro .popup-box a {
+    color: #ff9a3c;
+}
+
+/* Páginas de Termos / Política de Privacidade (se usarem estas classes) */
 body.modo-escuro .aviso p,
 body.modo-escuro .politicas p,
 body.modo-escuro .politica p,
 body.modo-escuro .termos p {
-    color:  #eee;
-}
-/* Links continuam visíveis */
-body.modo-escuro a {
-    color: #ffffff;
+    color: #eee;
 }
 
 /* ===== CARROSSEL DE PRODUTOS ===== */
