@@ -23,6 +23,9 @@
             box-shadow: 0 2px 20px rgba(0,0,0,0.06);
             position: sticky; top: 0; z-index: 10;
         }
+        .logo {
+       cursor: pointer;
+      }
         .logo { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; color: #ff6a00; }
         nav a { margin-left: 24px; text-decoration: none; color: #333; font-weight: 500; transition: color 0.2s; }
         nav a:hover { color: #ff6a00; }
@@ -176,7 +179,7 @@
 <body>
 
 <header>
-    <div class="logo">ZUNGAKI</div>
+   <div class="logo" onclick="window.location.href='index.html'">ZUNGAKI</div>
 
     <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-menu">
         <span></span>
