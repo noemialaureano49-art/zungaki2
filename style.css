@@ -759,6 +759,10 @@ body.modo-escuro .centro {
     background: #1e1c18;
 }
 
+body.modo-escuro .centro-text h1 {
+    color: #ff9a3c;
+}
+
 body.modo-escuro .centro-text p {
     color: #ccc;
 }
