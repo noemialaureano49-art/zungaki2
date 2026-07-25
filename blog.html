@@ -48,6 +48,53 @@
         .menu-toggle.aberto span:nth-child(2) { opacity: 0; }
         .menu-toggle.aberto span:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
 
+        /* Botão sol/lua (modo escuro) */
+        .dark-toggle {
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            line-height: 1;
+            padding: 4px;
+        }
+
+        /* Transições suaves ao trocar de tema */
+        body, header, .artigo-destaque, .artigo-card, .sidebar-box, footer {
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        /* ===== MODO ESCURO ===== */
+        body.modo-escuro { background: #14120f; color: #eee; }
+        body.modo-escuro header { background: #1e1c18; box-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+        body.modo-escuro nav a { color: #eee; }
+        body.modo-escuro nav a:hover { color: #ff6a00; }
+        body.modo-escuro .menu-toggle span { background: #eee; }
+
+        body.modo-escuro .hero-blog { background: #0f0d0b; }
+        body.modo-escuro .hero-blog p { color: #bbb; }
+
+        body.modo-escuro .artigo-destaque,
+        body.modo-escuro .artigo-card,
+        body.modo-escuro .sidebar-box {
+            background: #1e1c18;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+        body.modo-escuro .artigo-destaque p,
+        body.modo-escuro .artigo-card p,
+        body.modo-escuro .texto-extra p {
+            color: #ccc;
+        }
+        body.modo-escuro .tag-cat { background: #3a2b1f; color: #ff9a3c; }
+        body.modo-escuro .tag-cat:hover { background: #4a3826; }
+        body.modo-escuro .data { color: #999; }
+
+        body.modo-escuro .sidebar h3 { border-bottom-color: #ff6a00; }
+        body.modo-escuro .cat-lista li { border-bottom-color: #333; }
+        body.modo-escuro .cat-lista li span { background: #3a2b1f; color: #ff9a3c; }
+        body.modo-escuro .popular-item { border-bottom-color: #333; }
+
+        body.modo-escuro footer { background: #0f0d0b; }
+
         .hero-blog {
             background: #1a1a1a;
             color: white;
@@ -106,7 +153,10 @@
             font-size: 0.78rem;
             font-weight: 700;
             text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.2s;
         }
+        .tag-cat:hover { background: #ffe0cc; }
         .data { color: #999; font-size: 0.85rem; }
         .artigo-destaque h2 {
             font-family: 'Syne', sans-serif;
@@ -114,6 +164,8 @@
             margin-bottom: 10px;
             line-height: 1.2;
         }
+        .titulo-clicavel { cursor: pointer; transition: color 0.2s; }
+        .titulo-clicavel:hover { color: #ff6a00; }
         .artigo-destaque p { color: #555; line-height: 1.7; margin-bottom: 18px; }
         .btn-ler {
             display: inline-flex; align-items: center; gap: 8px;
@@ -121,8 +173,19 @@
             padding: 10px 22px; border-radius: 999px;
             text-decoration: none; font-weight: 600;
             transition: background 0.2s;
+            border: none; cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
         }
         .btn-ler:hover { background: #e55a00; }
+
+        /* Texto extra (Ler mais) */
+        .texto-extra {
+            display: none;
+            overflow: hidden;
+        }
+        .texto-extra.aberto { display: block; }
+        .artigo-destaque .texto-extra p { color: #555; line-height: 1.7; margin-bottom: 12px; }
+        .artigo-card .texto-extra p { color: #666; font-size: 0.88rem; line-height: 1.6; margin-bottom: 10px; }
 
         /* Lista de artigos */
         .artigo-card {
@@ -274,6 +337,8 @@
         <a href="index.html#contacto">Contacto</a>
         <a href="login.html">Assinar</a>
     </nav>
+
+    <button id="dark-mode-toggle" class="dark-toggle" aria-label="Ativar modo escuro">🌙</button>
 </header>
 
 <section class="hero-blog">
@@ -286,69 +351,90 @@
     <!-- Coluna principal -->
     <main>
         <!-- Artigo em destaque -->
-        <article class="artigo-destaque">
+        <article class="artigo-destaque" id="artigo-fotos">
             <div class="img-placeholder">🛒</div>
             <div class="corpo">
                 <div class="meta">
                     <span class="tag-cat">Dicas de Venda</span>
                     <span class="data">12 de Maio, 2026</span>
                 </div>
-                <h2>Como Aumentar as Suas Vendas com Fotos de Qualidade</h2>
+                <h2 class="titulo-clicavel">Como Aumentar as Suas Vendas com Fotos de Qualidade</h2>
                 <p>Uma boa fotografia pode triplicar a atenção que o seu produto recebe. Descubra como tirar fotos incríveis com o telemóvel e conquistar mais clientes na plataforma Zungaki...</p>
-                <a href="#" class="btn-ler">Ler Artigo →</a>
+                <div class="texto-extra">
+                    <p>Comece por usar luz natural: fotografe perto de uma janela ou ao ar livre, evitando o flash direto, que costuma criar sombras duras e distorcer as cores do produto.</p>
+                    <p>Escolha um fundo neutro e limpo, sem objetos a distrair a atenção, e tire várias fotos de ângulos diferentes para o cliente perceber bem o tamanho e a qualidade.</p>
+                    <p>Por fim, edite o essencial: ajuste o brilho e o contraste sem exagerar, para a foto continuar a representar fielmente o que está a vender.</p>
+                </div>
+                <button type="button" class="btn-ler">Ler Artigo →</button>
             </div>
         </article>
 
         <!-- Artigos lista -->
-        <article class="artigo-card">
+        <article class="artigo-card" id="artigo-produtos">
             <div class="card-img">🥬</div>
             <div class="card-corpo">
                 <div class="meta">
                     <span class="tag-cat">Mercado Local</span>
                     <span class="data">5 de Maio, 2026</span>
                 </div>
-                <h3>Os Produtos Mais Procurados em Luanda Este Mês</h3>
+                <h3 class="titulo-clicavel">Os Produtos Mais Procurados em Luanda Este Mês</h3>
                 <p>Fuba, tomates, e morangos lideram as buscas. Veja o relatório completo e prepare o seu stock.</p>
-                <a href="#" class="btn-ler">Ler →</a>
+                <div class="texto-extra">
+                    <p>Além destes três, batata-doce e cebola também tiveram procura crescente, sobretudo nos bairros do Kilamba e Talatona.</p>
+                    <p>A recomendação para vendedores é reforçar o stock destes itens no início da semana, que é quando o volume de pedidos costuma ser maior.</p>
+                </div>
+                <button type="button" class="btn-ler">Ler →</button>
             </div>
         </article>
 
-        <article class="artigo-card">
+        <article class="artigo-card" id="artigo-whatsapp">
             <div class="card-img">📱</div>
             <div class="card-corpo">
                 <div class="meta">
                     <span class="tag-cat">Tecnologia</span>
                     <span class="data">28 de Abril, 2026</span>
                 </div>
-                <h3>WhatsApp como Ferramenta de Vendas: Guia Prático</h3>
+                <h3 class="titulo-clicavel">WhatsApp como Ferramenta de Vendas: Guia Prático</h3>
                 <p>Aprenda a usar o WhatsApp Business para atender clientes mais rápido e fechar mais pedidos.</p>
-                <a href="#" class="btn-ler">Ler →</a>
+                <div class="texto-extra">
+                    <p>Configure respostas automáticas para as perguntas mais comuns, como horário de funcionamento e formas de pagamento, para ganhar tempo no atendimento.</p>
+                    <p>Use o catálogo do WhatsApp Business para organizar os seus produtos com fotos e preços, facilitando a vida de quem só quer escolher e encomendar.</p>
+                </div>
+                <button type="button" class="btn-ler">Ler →</button>
             </div>
         </article>
 
-        <article class="artigo-card">
+        <article class="artigo-card" id="artigo-tania">
             <div class="card-img">💡</div>
             <div class="card-corpo">
                 <div class="meta">
                     <span class="tag-cat">Empreendedorismo</span>
                     <span class="data">18 de Abril, 2026</span>
                 </div>
-                <h3>Da Banca ao Digital: A História de Sucesso de Tânia Fernando</h3>
+                <h3 class="titulo-clicavel">Da Banca ao Digital: A História de Sucesso de Tânia Fernando</h3>
                 <p>Como uma vendedora do Kilamba passou a receber pedidos de toda Luanda graças à plataforma.</p>
-                <a href="#" class="btn-ler">Ler →</a>
+                <div class="texto-extra">
+                    <p>Tânia começou a vender frutas numa pequena banca de bairro e decidiu experimentar a Zungaki para chegar a mais clientes sem precisar de aumentar o espaço físico.</p>
+                    <p>Em poucos meses, os pedidos passaram a chegar de vários pontos de Luanda, e hoje ela já organiza entregas semanais com a ajuda de um familiar.</p>
+                </div>
+                <button type="button" class="btn-ler">Ler →</button>
             </div>
         </article>
 
-        <article class="artigo-card">
+        <article class="artigo-card" id="artigo-logistica">
             <div class="card-img">📦</div>
             <div class="card-corpo">
                 <div class="meta">
                     <span class="tag-cat">Logística</span>
                     <span class="data">10 de Abril, 2026</span>
                 </div>
-                <h3>Como Organizar Entregas Sem Complicação</h3>
+                <h3 class="titulo-clicavel">Como Organizar Entregas Sem Complicação</h3>
                 <p>Dicas simples para vendedores que querem começar a fazer entregas e fidelizar mais clientes.</p>
-                <a href="#" class="btn-ler">Ler →</a>
+                <div class="texto-extra">
+                    <p>Defina zonas de entrega fixas por dia da semana, assim consegue agrupar vários pedidos na mesma rota e poupar tempo e combustível.</p>
+                    <p>Combine sempre um horário aproximado com o cliente e avise por WhatsApp quando a encomenda estiver a caminho — isso reduz muito as reclamações.</p>
+                </div>
+                <button type="button" class="btn-ler">Ler →</button>
             </div>
         </article>
     </main>
@@ -380,19 +466,19 @@
             <h3>🔥 Mais Lidos</h3>
             <div class="popular-item">
                 <span class="popular-num">01</span>
-                <span class="popular-titulo">Como tirar fotos de qualidade com telemóvel</span>
+                <span class="popular-titulo" data-alvo="artigo-fotos">Como tirar fotos de qualidade com telemóvel</span>
             </div>
             <div class="popular-item">
                 <span class="popular-num">02</span>
-                <span class="popular-titulo">Os produtos mais procurados em Luanda</span>
+                <span class="popular-titulo" data-alvo="artigo-produtos">Os produtos mais procurados em Luanda</span>
             </div>
             <div class="popular-item">
                 <span class="popular-num">03</span>
-                <span class="popular-titulo">WhatsApp Business: guia para vendedores</span>
+                <span class="popular-titulo" data-alvo="artigo-whatsapp">WhatsApp Business: guia para vendedores</span>
             </div>
             <div class="popular-item">
                 <span class="popular-num">04</span>
-                <span class="popular-titulo">História de sucesso: Tânia Fernando</span>
+                <span class="popular-titulo" data-alvo="artigo-tania">História de sucesso: Tânia Fernando</span>
             </div>
         </div>
     </aside>
@@ -418,6 +504,68 @@
             menuToggle.classList.remove('aberto');
             menuToggle.setAttribute('aria-expanded', 'false');
         });
+    });
+
+    // Expandir/recolher texto do artigo (botão "Ler mais" e título)
+    function alternarArtigo(container, forcarAbrir) {
+        if (!container) return;
+        const extra = container.querySelector('.texto-extra');
+        const botao = container.querySelector('.btn-ler');
+        if (!extra || !botao) return;
+
+        if (botao.dataset.textoFechado === undefined) {
+            botao.dataset.textoFechado = botao.textContent.trim();
+        }
+
+        const deveAbrir = typeof forcarAbrir === 'boolean' ? forcarAbrir : !extra.classList.contains('aberto');
+        extra.classList.toggle('aberto', deveAbrir);
+        botao.textContent = deveAbrir ? 'Ler Menos ↑' : botao.dataset.textoFechado;
+        return deveAbrir;
+    }
+
+    document.querySelectorAll('.btn-ler').forEach(botao => {
+        botao.addEventListener('click', () => {
+            alternarArtigo(botao.closest('.corpo, .card-corpo'));
+        });
+    });
+
+    document.querySelectorAll('.titulo-clicavel').forEach(titulo => {
+        titulo.addEventListener('click', () => {
+            alternarArtigo(titulo.closest('.corpo, .card-corpo'));
+        });
+    });
+
+    document.querySelectorAll('.tag-cat').forEach(tag => {
+        tag.addEventListener('click', () => {
+            alternarArtigo(tag.closest('.corpo, .card-corpo'), true);
+        });
+    });
+
+    document.querySelectorAll('.popular-titulo').forEach(item => {
+        item.addEventListener('click', () => {
+            const artigo = document.getElementById(item.dataset.alvo);
+            if (!artigo) return;
+
+            const container = artigo.querySelector('.corpo, .card-corpo');
+            alternarArtigo(container, true);
+            artigo.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+    });
+
+    // Modo escuro
+    const darkToggle = document.getElementById('dark-mode-toggle');
+
+    function aplicarModoEscuro(ativo) {
+        document.body.classList.toggle('modo-escuro', ativo);
+        darkToggle.textContent = ativo ? '☀️' : '🌙';
+        darkToggle.setAttribute('aria-label', ativo ? 'Ativar modo claro' : 'Ativar modo escuro');
+        localStorage.setItem('zungaki-modo-escuro', ativo ? '1' : '0');
+    }
+
+    aplicarModoEscuro(localStorage.getItem('zungaki-modo-escuro') === '1');
+
+    darkToggle.addEventListener('click', () => {
+        aplicarModoEscuro(!document.body.classList.contains('modo-escuro'));
     });
 </script>
 
