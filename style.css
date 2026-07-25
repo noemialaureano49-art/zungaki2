@@ -762,7 +762,9 @@ body.modo-escuro .card {
 }
 
 /* ===== TEXTO BRANCO NO DARK MODE ===== */
-body.modo-escuro p,
+body.modo-escuro header p strong {
+    color: #ffffff;
+}
 body.modo-escuro span,
 body.modo-escuro small,
 body.modo-escuro li,
