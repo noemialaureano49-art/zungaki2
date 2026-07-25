@@ -174,7 +174,9 @@ footer {
     padding: 24px;
     font-size: 0.88rem;
 }
-
+.logo {
+    cursor: pointer;
+}
 footer a {
     color: #ff6a00;
     text-decoration: none;
