@@ -11,7 +11,9 @@
 header .logo {
     font-family: 'Syne', sans-serif;
 }
-
+.logo {
+    cursor: pointer;
+}
 body {
     background: linear-gradient(135deg, #ff6a00, #ffb347);
     min-height: 100vh;
