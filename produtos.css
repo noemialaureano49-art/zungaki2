@@ -12,6 +12,9 @@
 body {
     background: #f5f5f5;
 }
+.logo {
+    cursor: pointer;
+}
 
 /* TITULO */
 .produtos h2 {
