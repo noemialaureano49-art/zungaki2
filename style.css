@@ -765,6 +765,7 @@ body.modo-escuro .card {
 body.modo-escuro header p strong {
     color: #ffffff;
 }
+body.modo-escuro p,
 body.modo-escuro span,
 body.modo-escuro small,
 body.modo-escuro li,
