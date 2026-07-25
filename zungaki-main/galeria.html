@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria - Zungaki</title>
+    <meta name="description" content="Veja fotos reais dos produtos e vendedores da Zungaki, o mercado digital local de Luanda.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Analytics (GA4) -->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'DM Sans', sans-serif; background: #faf9f7; color: #1a1a1a; }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 40px;
+            background: #fff;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+            position: sticky; top: 0; z-index: 10;
+        }
+        .logo { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; color: #ff6a00; }
+        nav a { margin-left: 24px; text-decoration: none; color: #333; font-weight: 500; transition: color 0.2s; }
+        nav a:hover { color: #ff6a00; }
+
+        .hero-galeria {
+            background: linear-gradient(135deg, #ff6a00 0%, #ff9a3c 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 40px;
+        }
+        .hero-galeria h1 { font-family: 'Syne', sans-serif; font-size: 3rem; margin-bottom: 12px; }
+        .hero-galeria p { font-size: 1.1rem; opacity: 0.9; max-width: 560px; margin: 0 auto; }
+
+        /* Filtros */
+        .filtros {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            padding: 36px 40px 20px;
+            flex-wrap: wrap;
+        }
+        .filtro-btn {
+            padding: 10px 24px;
+            border: 2px solid #ff6a00;
+            border-radius: 999px;
+            background: transparent;
+            color: #ff6a00;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .filtro-btn.ativo, .filtro-btn:hover {
+            background: #ff6a00;
+            color: white;
+        }
+
+        /* Galeria masonry */
+        .galeria-container {
+            padding: 20px 40px 60px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        .galeria-item {
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            background: #e0dbd5;
+            height: 240px;
+        }
+        .galeria-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .galeria-item:hover img { transform: scale(1.04); }
+        .galeria-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: flex-end;
+            padding: 16px;
+        }
+        .galeria-item:hover .galeria-overlay { opacity: 1; }
+        .galeria-overlay span {
+            color: white;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Placeholder cards (sem imagem real) — mesma altura/largura que os itens com foto */
+        .galeria-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ffe0cc, #ffd0b0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.88);
+            z-index: 999;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox.aberto { display: flex; }
+        .lightbox-inner { position: relative; max-width: 800px; width: 90%; }
+        .lightbox-inner img { width: 100%; border-radius: 16px; }
+        .lightbox-fechar {
+            position: absolute;
+            top: -40px; right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        .lightbox-legenda {
+            color: white;
+            text-align: center;
+            margin-top: 12px;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 900px) {
+            .galeria-container { grid-template-columns: repeat(2, 1fr); }
+            .hero-galeria h1 { font-size: 2rem; }
+        }
+        @media (max-width: 480px) {
+            .galeria-container { grid-template-columns: 1fr; padding: 20px; }
+            header { padding: 14px 20px; flex-direction: column; gap: 10px; }
+        }
+
+        /* ===== MODO ESCURO ===== */
+        body.modo-escuro { background: #14120f; color: #eee; }
+        body.modo-escuro header { background: #1e1c18; box-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+        body.modo-escuro nav a { color: #eee; }
+        body.modo-escuro nav a:hover { color: #ff6a00; }
+        body.modo-escuro .hero-galeria { background: linear-gradient(135deg, #b34d00 0%, #8a3d00 100%); }
+        body.modo-escuro .filtro-btn { color: #ff9a3c; border-color: #ff6a00; }
+        body.modo-escuro .filtro-btn.ativo, body.modo-escuro .filtro-btn:hover { background: #ff6a00; color: #fff; }
+        body.modo-escuro .galeria-item { background: #26221c; }
+        body.modo-escuro .galeria-placeholder { background: linear-gradient(135deg, #3a2b1f, #4a3826); }
+        body.modo-escuro .lightbox { background: rgba(0,0,0,0.92); }
+
+        /* ===== RODAPÉ ===== */
+        footer {
+            background: #1a1a1a; color: #bbb;
+            text-align: center; padding: 24px;
+            font-size: 0.88rem;
+        }
+        footer a { color: #ff6a00; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+        body.modo-escuro footer { background: #0f0d0b; }
+    </style>
+    <script defer src="analytics.js"></script>
+</head>
+<body>
+
+<header>
+    <div class="logo">ZUNGAKI</div>
+
+    <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav id="nav-menu" aria-label="Menu principal">
+        <a href="index.html">Home</a>
+        <a href="index.html#sobre">Sobre</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="galeria.html">Galeria</a>
+        <a href="blog.html">Blog</a>
+        <a href="index.html#contacto">Contacto</a>
+        <a href="login.html">Assinar</a>
+    </nav>
+
+    <button id="dark-mode-toggle" class="dark-toggle" aria-label="Ativar modo escuro">
+        <i class="icon-lua">🌙</i>
+    </button>
+</header>
+
+<section class="hero-galeria">
+    <h1>Galeria Zungaki</h1>
+    <p>Fotos reais dos nossos produtos, vendedores e momentos do mercado local de Luanda.</p>
+</section>
+
+<div class="filtros">
+    <button class="filtro-btn ativo" onclick="filtrar('todos', this)">Todos</button>
+    <button class="filtro-btn" onclick="filtrar('frutas', this)">Frutas & Legumes</button>
+    <button class="filtro-btn" onclick="filtrar('comida', this)">Comidas & Doces</button>
+    <button class="filtro-btn" onclick="filtrar('roupa', this)">Roupa</button>
+    <button class="filtro-btn" onclick="filtrar('vendedores', this)">Vendedores</button>
+</div>
+
+<div class="galeria-container" id="galeria">
+
+    <!-- Frutas & Legumes -->
+    <div class="galeria-item" data-cat="frutas" onclick="abrirLightbox('assets/images/morango.jpg', 'Morangos frescos')">
+<img src="assets/images/morango.jpg" alt="Morangos" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>🍓 Morangos Frescos</span></div>
+    </div>
+
+    <div class="galeria-item" data-cat="frutas" onclick="abrirLightbox('assets/images/zunga4.jpg', 'Tomates maduros')">
+<img src="assets/images/zunga4.jpg" alt="Tomates" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>🍅 Tomates Maduros</span></div>
+    </div>
+
+    <div class="galeria-item" data-cat="roupa" onclick="abrirLightbox('assets/images/sapato.jpg', 'Doces Ló')">
+<img src="assets/images/sapato.jpg" alt="Produto" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>🍬 Doces Artesanais</span></div>
+    </div>
+
+     <div class="galeria-item" data-cat="moda" onclick="abrirLightbox('assets/images/comida1.jpg', 'Comida 1')">
+<img src="assets/images/comida1.jpg" alt="Comida 1" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>🍬 Doces Artesanais</span></div>
+    </div>
+
+    <div class="galeria-item" data-cat="moda" onclick="abrirLightbox('assets/images/comida2.jpg', 'Comida 2')">
+<img src="assets/images/comida2.jpg" alt="Comida 2" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>🍬 Doces Artesanais</span></div>
+    </div>
+
+    <div class="galeria-item" data-cat="moda" onclick="abrirLightbox('assets/images/mercado1.jpg', 'Mercado 1')">
+<img src="assets/images/mercado1.jpg" alt="Produto" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>🍬 Doces Artesanais</span></div>
+    </div>
+
+    <div class="galeria-item" data-cat="moda" onclick="abrirLightbox('assets/images/mercado2.jpg', 'Mercado 2')">
+<img src="assets/images/mercado2.jpg" alt="Produto" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>🍬 Doces Artesanais</span></div>
+    </div>
+
+
+    <div class="galeria-item" data-cat="vendedores">
+<img src="assets/images/mama.jpg" alt="Vendedora" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>👩‍💼 Tânia, Vendedora</span></div>
+    </div>
+
+    <div class="galeria-item" data-cat="vendedores">
+<img src="assets/images/paivendedor.jpg" alt="Vendedor" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>👨‍💼 Adão, Vendedor</span></div>
+    </div>
+
+   
+
+    <div class="galeria-item" data-cat="frutas">
+<img src="assets/images/fuba.jpg" alt="Produto" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>🌽 Fuba de Qualidade</span></div>
+    </div>
+
+
+
+    <!-- Imagens adicionadas da pasta imagem -->
+    <div class="galeria-item" data-cat="comida" onclick="abrirLightbox('assets/images/comida3.jpg', 'Comida 3')">
+        <img src="assets/images/comida3.jpg" alt="Comida 3" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>Comida 3</span></div>
+    </div>
+    <div class="galeria-item" data-cat="comida" onclick="abrirLightbox('assets/images/comida4.jpg', 'Comida 4')">
+        <img src="assets/images/comida4.jpg" alt="Comida 4" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>Comida 4</span></div>
+    </div>
+    <div class="galeria-item" data-cat="frutas" onclick="abrirLightbox('assets/images/fruta5.jpg', 'Fruta 5')">
+        <img src="assets/images/fruta5.jpg" alt="Fruta 5" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>Fruta 5</span></div>
+    </div>
+    <div class="galeria-item" data-cat="frutas" onclick="abrirLightbox('assets/images/fruta6.jpg', 'Fruta 6')">
+        <img src="assets/images/fruta6.jpg" alt="Fruta 6" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>Fruta 6</span></div>
+    </div>
+    <div class="galeria-item" data-cat="frutas" onclick="abrirLightbox('assets/images/fruta7.jpg', 'Fruta 7')">
+        <img src="assets/images/fruta7.jpg" alt="Fruta 7" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>Fruta 7</span></div>
+    </div>
+    <div class="galeria-item" data-cat="roupa" onclick="abrirLightbox('assets/images/roupa1.jpg', 'Roupa 1')">
+        <img src="assets/images/roupa1.jpg" alt="Roupa 1" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>Roupa 1</span></div>
+    </div>
+    <div class="galeria-item" data-cat="roupa" onclick="abrirLightbox('assets/images/roupa2.jpg', 'Roupa 2')">
+        <img src="assets/images/roupa2.jpg" alt="Roupa 2" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>Roupa 2</span></div>
+    </div>
+    <div class="galeria-item" data-cat="roupa" onclick="abrirLightbox('assets/images/roupa3.jpg', 'Roupa 3')">
+        <img src="assets/images/roupa3.jpg" alt="Roupa 3" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>Roupa 3</span></div>
+    </div>
+    <div class="galeria-item" data-cat="roupa" onclick="abrirLightbox('assets/images/roupa4.jpg', 'Roupa 4')">
+        <img src="assets/images/roupa4.jpg" alt="Roupa 4" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>Roupa 4</span></div>
+    </div>
+    <div class="galeria-item" data-cat="vendedores" onclick="abrirLightbox('assets/images/vendedor1.jpg', 'Vendedor 1')">
+        <img src="assets/images/vendedor1.jpg" alt="Vendedor 1" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>Vendedor 1</span></div>
+    </div>
+    <div class="galeria-item" data-cat="vendedores" onclick="abrirLightbox('assets/images/vendedor2.jpg', 'Vendedor 2')">
+        <img src="assets/images/vendedor2.jpg" alt="Vendedor 2" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>Vendedor 2</span></div>
+    </div>
+    <div class="galeria-item" data-cat="vendedores" onclick="abrirLightbox('assets/images/vendedor3.jpg', 'Vendedor 3')">
+        <img src="assets/images/vendedor3.jpg" alt="Vendedor 3" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>Vendedor 3</span></div>
+    </div>
+    <div class="galeria-item" data-cat="vendedores" onclick="abrirLightbox('assets/images/medium-shot-woman-carrying-food-head.jpg', 'Vendedora no mercado')">
+        <img src="assets/images/medium-shot-woman-carrying-food-head.jpg" alt="Vendedora no mercado" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>Vendedora no mercado</span></div>
+    </div>
+    <div class="galeria-item" data-cat="vendedores" onclick="abrirLightbox('assets/images/smiley-man-thrift-shop-side-view.jpg', 'Vendedor no mercado')">
+        <img src="assets/images/smiley-man-thrift-shop-side-view.jpg" alt="Vendedor no mercado" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>Vendedor no mercado</span></div>
+    </div>
+    <div class="galeria-item" data-cat="medicamentos" onclick="abrirLightbox('assets/images/medicamento1.jpg', 'Medicamento 1')">
+        <img src="assets/images/medicamento1.jpg" alt="Medicamento 1" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>Medicamento 1</span></div>
+    </div>
+    <div class="galeria-item" data-cat="medicamentos" onclick="abrirLightbox('assets/images/medicamento2.jpg', 'Medicamento 2')">
+        <img src="assets/images/medicamento2.jpg" alt="Medicamento 2" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>Medicamento 2</span></div>
+    </div>
+    <div class="galeria-item" data-cat="medicamentos" onclick="abrirLightbox('assets/images/medicamento3.jpg', 'Medicamento 3')">
+        <img src="assets/images/medicamento3.jpg" alt="Medicamento 3" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>Medicamento 3</span></div>
+    </div>
+    <div class="galeria-item" data-cat="mercado" onclick="abrirLightbox('assets/images/centro.jpg', 'Mercado local')">
+        <img src="assets/images/centro.jpg" alt="Mercado local" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>Mercado local</span></div>
+    </div>
+    <div class="galeria-item" data-cat="mercado" onclick="abrirLightbox('assets/images/mercado1 - Copy.jpg', 'Mercado 1')">
+        <img src="assets/images/mercado1 - Copy.jpg" alt="Mercado 1" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>Mercado 1</span></div>
+    </div>
+    <div class="galeria-item" data-cat="mercado" onclick="abrirLightbox('assets/images/mercado5.jpg', 'Mercado 5')">
+        <img src="assets/images/mercado5.jpg" alt="Mercado 5" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>Mercado 5</span></div>
+    </div>
+    <div class="galeria-item" data-cat="mercado" onclick="abrirLightbox('assets/images/mercado6.jpg', 'Mercado 6')">
+        <img src="assets/images/mercado6.jpg" alt="Mercado 6" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>Mercado 6</span></div>
+    </div>
+    <div class="galeria-item" data-cat="mercado" onclick="abrirLightbox('assets/images/mercado7.jpg', 'Mercado 7')">
+        <img src="assets/images/mercado7.jpg" alt="Mercado 7" loading="lazy" decoding="async">
+        <div class="galeria-overlay"><span>Mercado 7</span></div>
+    </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="fecharLightbox()">
+    <div class="lightbox-inner" onclick="event.stopPropagation()">
+        <button class="lightbox-fechar" onclick="fecharLightbox()">✕</button>
+        <img id="lightbox-img" src="" alt="">
+        <p class="lightbox-legenda" id="lightbox-legenda"></p>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 Zungaki · <a href="index.html">Início</a> · <a href="politica-privacidade.html">Privacidade</a> · <a href="termos.html">Termos e Condições</a> · <a href="sitemap.html">Mapa do Site</a></p>
+</footer>
+
+
+<script>
+    function filtrar(cat, btn) {
+        document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        document.querySelectorAll('.galeria-item').forEach(item => {
+            item.style.display = (cat === 'todos' || item.dataset.cat === cat) ? 'block' : 'none';
+        });
+    }
+
+    function abrirLightbox(src, legenda) {
+        document.getElementById('lightbox-img').src = src;
+        document.getElementById('lightbox-legenda').textContent = legenda;
+        document.getElementById('lightbox').classList.add('aberto');
+    }
+
+    function fecharLightbox() {
+        document.getElementById('lightbox').classList.remove('aberto');
+    }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharLightbox(); });
+</script>
+<script src="Script.js"></script>
+
+</body>
+</html>

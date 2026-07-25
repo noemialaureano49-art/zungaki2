@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter - Zungaki</title>
+    <meta name="description" content="Subscreva a newsletter da Zungaki e receba dicas, ofertas exclusivas e novidades do mercado local.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Google Analytics (GA4) -->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ff6a00 0%, #ff9a3c 60%, #ffb347 100%);
+            display: flex; flex-direction: column;
+        }
+
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 18px 40px; background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+        .logo { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; color: white; }
+        nav a { margin-left: 20px; text-decoration: none; color: rgba(255,255,255,0.85); font-weight: 500; }
+        nav a:hover { color: white; }
+
+        .hero {
+            flex: 1; display: flex;
+            align-items: center; justify-content: center;
+            padding: 60px 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 28px;
+            padding: 50px;
+            max-width: 560px;
+            width: 100%;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.18);
+            text-align: center;
+        }
+
+        .icone { font-size: 3.5rem; margin-bottom: 20px; }
+
+        .card h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 2rem;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+        .card .subtitulo {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 32px;
+            font-size: 1rem;
+        }
+
+        /* Benefícios */
+        .beneficios {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+        .beneficio {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: #fff8f4;
+            border-radius: 12px;
+            border-left: 3px solid #ff6a00;
+        }
+        .beneficio .emoji { font-size: 1.3rem; }
+        .beneficio p { font-size: 0.92rem; color: #333; font-weight: 500; }
+
+        /* Form */
+        .form-group { margin-bottom: 14px; text-align: left; }
+        .form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: #333; margin-bottom: 6px; }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 13px 16px;
+            border: 1.5px solid #ddd;
+            border-radius: 12px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+            background: white;
+        }
+        .form-group input:focus, .form-group select:focus { border-color: #ff6a00; }
+
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
+            background: #ff6a00;
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-family: 'Syne', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            margin-top: 6px;
+        }
+        .btn-submit:hover { background: #e55a00; transform: translateY(-1px); }
+
+        .privacidade {
+            font-size: 0.78rem;
+            color: #999;
+            margin-top: 16px;
+            line-height: 1.5;
+        }
+        .privacidade a { color: #ff6a00; text-decoration: none; }
+
+        /* Sucesso */
+        .sucesso {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        .sucesso .check { font-size: 4rem; margin-bottom: 16px; }
+        .sucesso h2 { font-family: 'Syne', sans-serif; color: #ff6a00; margin-bottom: 10px; }
+        .sucesso p { color: #666; line-height: 1.6; }
+
+        /* Contador social */
+        .social-proof {
+            display: flex; align-items: center; justify-content: center;
+            gap: 10px; margin-bottom: 28px;
+            color: #888; font-size: 0.88rem;
+        }
+        .avatares { display: flex; }
+        .avatar {
+            width: 32px; height: 32px;
+            border-radius: 50%; border: 2px solid white;
+            background: linear-gradient(135deg, #ff6a00, #ffb347);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.75rem; color: white; font-weight: 700;
+            margin-left: -8px;
+        }
+        .avatar:first-child { margin-left: 0; }
+
+        @media (max-width: 600px) {
+            .card { padding: 32px 24px; }
+            header { padding: 14px 20px; }
+            nav { display: none; }
+        }
+
+        /* ===== RODAPÉ ===== */
+        footer {
+            background: rgba(26,26,26,0.85);
+            color: #eee;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.85rem;
+        }
+        footer a { color: #ffd9b3; text-decoration: underline; }
+    </style>
+    <script defer src="analytics.js"></script>
+</head>
+<body>
+
+<header>
+    <div class="logo">ZUNGAKI</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="galeria.html">Galeria</a>
+        <a href="blog.html">Blog</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="card" id="form-card">
+        <div class="icone">📬</div>
+        <h1>Fique Por Dentro de Tudo</h1>
+        <p class="subtitulo">Junte-se a centenas de vendedores e compradores que recebem as melhores dicas do mercado local de Luanda.</p>
+
+        <div class="social-proof">
+            <div class="avatares">
+                <div class="avatar">T</div>
+                <div class="avatar">A</div>
+                <div class="avatar">M</div>
+                <div class="avatar">+</div>
+            </div>
+            <span>+340 pessoas já subscreveram</span>
+        </div>
+
+        <div class="beneficios">
+            <div class="beneficio">
+                <span class="emoji">🎯</span>
+                <p>Dicas semanais para vender mais e melhor</p>
+            </div>
+            <div class="beneficio">
+                <span class="emoji">🛒</span>
+                <p>Ofertas exclusivas antes de serem publicadas</p>
+            </div>
+            <div class="beneficio">
+                <span class="emoji">📊</span>
+                <p>Relatórios dos produtos mais procurados em Luanda</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="nome">Seu nome</label>
+            <input type="text" id="nome" placeholder="Ex: Tânia Fernando">
+        </div>
+        <div class="form-group">
+            <label for="email">Seu email</label>
+            <input type="email" id="email" placeholder="Ex: tania@gmail.com">
+        </div>
+        <div class="form-group">
+            <label for="tipo">Você é...</label>
+            <select id="tipo">
+                <option value="">Selecionar</option>
+                <option value="vendedor">Vendedor / Zungueira</option>
+                <option value="comprador">Comprador</option>
+                <option value="ambos">Ambos</option>
+            </select>
+        </div>
+
+        <button class="btn-submit" onclick="subscrever()">Subscrever Gratuitamente 🚀</button>
+        <p class="privacidade">Ao subscrever, aceita a nossa <a href="politica-privacidade.html">Política de Privacidade</a>. Sem spam, prometemos.</p>
+    </div>
+
+    <!-- Estado de sucesso (oculto) -->
+    <div class="card sucesso" id="sucesso-card">
+        <div class="check">🎉</div>
+        <h2>Subscrito com Sucesso!</h2>
+        <p>Obrigado! Vai receber o nosso próximo email em breve. Bem-vindo à família Zungaki.</p>
+        <br>
+        <a href="index.html" style="color:#ff6a00; font-weight:600; text-decoration:none;">← Voltar ao Início</a>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Zungaki · <a href="index.html">Início</a> · <a href="politica-privacidade.html">Privacidade</a> · <a href="termos.html">Termos e Condições</a></p>
+</footer>
+
+<script>
+    function subscrever() {
+        const nome = document.getElementById('nome').value.trim();
+        const email = document.getElementById('email').value.trim();
+        if (!nome || !email) {
+            alert('Por favor preencha o nome e o email.');
+            return;
+        }
+        if (!email.includes('@')) {
+            alert('Por favor insira um email válido.');
+            return;
+        }
+        document.getElementById('form-card').style.display = 'none';
+        document.getElementById('sucesso-card').style.display = 'block';
+    }
+</script>
+
+</body>
+</html>

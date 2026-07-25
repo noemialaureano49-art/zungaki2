@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Não Encontrada - Zungaki</title>
+    <meta name="description" content="A página que procura não existe ou foi movida. Volte ao início da Zungaki ou explore os nossos produtos.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <!-- Google Analytics (GA4) -->
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #faf9f7;
+            min-height: 100vh;
+            display: flex; flex-direction: column;
+        }
+
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 18px 40px; background: #fff;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+        }
+        .logo { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; color: #ff6a00; }
+        nav a { margin-left: 24px; text-decoration: none; color: #333; font-weight: 500; }
+        nav a:hover { color: #ff6a00; }
+
+        .hero-404 {
+            flex: 1;
+            display: flex; align-items: center; justify-content: center;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Fundo decorativo */
+        .hero-404::before {
+            content: '404';
+            position: absolute;
+            font-family: 'Syne', sans-serif;
+            font-size: 28vw;
+            font-weight: 900;
+            color: rgba(255,106,0,0.05);
+            z-index: 0;
+            user-select: none;
+            line-height: 1;
+        }
+
+        .conteudo-404 { position: relative; z-index: 1; max-width: 560px; }
+
+        .emoji-grande {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            display: block;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-14px); }
+        }
+
+        .numero-404 {
+            font-family: 'Syne', sans-serif;
+            font-size: 5rem;
+            font-weight: 900;
+            color: #ff6a00;
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+
+        .conteudo-404 h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.8rem;
+            color: #1a1a1a;
+            margin-bottom: 14px;
+        }
+
+        .conteudo-404 p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 36px;
+            font-size: 1.05rem;
+        }
+
+        .acoes {
+            display: flex; gap: 14px;
+            justify-content: center; flex-wrap: wrap;
+        }
+
+        .btn-principal {
+            padding: 13px 28px;
+            background: #ff6a00; color: white;
+            border-radius: 999px; text-decoration: none;
+            font-weight: 700; font-size: 0.95rem;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .btn-principal:hover { background: #e55a00; transform: translateY(-2px); }
+
+        .btn-secundario {
+            padding: 13px 28px;
+            background: transparent;
+            color: #ff6a00;
+            border: 2px solid #ff6a00;
+            border-radius: 999px; text-decoration: none;
+            font-weight: 700; font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+        .btn-secundario:hover {
+            background: #ff6a00; color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Links sugeridos */
+        .sugestoes {
+            background: white;
+            border-radius: 20px;
+            padding: 28px 32px;
+            margin: 48px auto 0;
+            max-width: 700px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+        }
+        .sugestoes h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem; color: #999;
+            text-transform: uppercase; letter-spacing: 0.5px;
+            margin-bottom: 18px;
+        }
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+        .link-card {
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            gap: 6px;
+            padding: 16px 12px;
+            background: #faf9f7;
+            border-radius: 14px;
+            text-decoration: none;
+            color: #333;
+            font-size: 0.88rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            text-align: center;
+        }
+        .link-card:hover { background: #fff3eb; color: #ff6a00; transform: translateY(-2px); }
+        .link-card .link-icone { font-size: 1.6rem; }
+
+        /* Barra de pesquisa */
+        .pesquisa {
+            margin-top: 20px;
+            display: flex; gap: 10px;
+        }
+        .pesquisa input {
+            flex: 1;
+            padding: 11px 16px;
+            border: 1.5px solid #ddd;
+            border-radius: 12px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.92rem;
+            outline: none;
+        }
+        .pesquisa input:focus { border-color: #ff6a00; }
+        .pesquisa button {
+            padding: 11px 20px;
+            background: #ff6a00; color: white;
+            border: none; border-radius: 12px;
+            font-weight: 700; cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            transition: background 0.2s;
+        }
+        .pesquisa button:hover { background: #e55a00; }
+
+        footer {
+            background: #1a1a1a; color: #bbb;
+            text-align: center; padding: 22px;
+            font-size: 0.88rem;
+        }
+        footer a { color: #ff6a00; text-decoration: none; }
+
+        @media (max-width: 600px) {
+            header { padding: 14px 20px; flex-direction: column; gap: 8px; }
+            .numero-404 { font-size: 4rem; }
+            .conteudo-404 h1 { font-size: 1.4rem; }
+            .links-grid { grid-template-columns: repeat(2, 1fr); }
+            .sugestoes { margin: 30px 20px 0; }
+        }
+    </style>
+    <script defer src="analytics.js"></script>
+</head>
+<body>
+
+<header>
+    <div class="logo">ZUNGAKI</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="galeria.html">Galeria</a>
+        <a href="blog.html">Blog</a>
+        <a href="index.html#contacto">Contacto</a>
+    </nav>
+</header>
+
+<main class="hero-404">
+    <div>
+        <div class="conteudo-404">
+            <span class="emoji-grande">🔍</span>
+            <div class="numero-404">404</div>
+            <h1>Página não encontrada</h1>
+            <p>Parece que esta página saiu para a rua fazer as compras e ainda não voltou! O endereço que procura não existe ou foi movido.</p>
+            <div class="acoes">
+                <a href="index.html" class="btn-principal">← Voltar ao Início</a>
+                <a href="produtos.html" class="btn-secundario">Ver Produtos</a>
+            </div>
+        </div>
+
+        <div class="sugestoes">
+            <h3>Talvez esteja a procura de...</h3>
+            <div class="links-grid">
+                <a href="index.html" class="link-card">
+                    <span class="link-icone">🏠</span>
+                    <span>Homepage</span>
+                </a>
+                <a href="produtos.html" class="link-card">
+                    <span class="link-icone">🛒</span>
+                    <span>Produtos</span>
+                </a>
+                <a href="galeria.html" class="link-card">
+                    <span class="link-icone">🖼️</span>
+                    <span>Galeria</span>
+                </a>
+                <a href="blog.html" class="link-card">
+                    <span class="link-icone">📝</span>
+                    <span>Blog</span>
+                </a>
+                <a href="login.html" class="link-card">
+                    <span class="link-icone">👤</span>
+                    <span>Login</span>
+                </a>
+                <a href="sitemap.html" class="link-card">
+                    <span class="link-icone">🗺️</span>
+                    <span>Mapa do Site</span>
+                </a>
+            </div>
+            <div class="pesquisa">
+                <input type="text" placeholder="Pesquisar na Zungaki..." id="pesquisaInput">
+                <button onclick="pesquisar()">Pesquisar</button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>© 2026 Zungaki · <a href="politica-privacidade.html">Privacidade</a> · <a href="termos.html">Termos</a> · <a href="sitemap.html">Mapa do Site</a></p>
+</footer>
+
+<script>
+    function pesquisar() {
+        const q = document.getElementById('pesquisaInput').value.trim();
+        if (q) window.location.href = 'produtos.html?q=' + encodeURIComponent(q);
+    }
+    document.getElementById('pesquisaInput').addEventListener('keydown', e => {
+        if (e.key === 'Enter') pesquisar();
+    });
+</script>
+
+</body>
+</html>

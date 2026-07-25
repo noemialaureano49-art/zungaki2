@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'DM Sans', Arial, sans-serif;
+}
+
+.login-box h2,
+header .logo {
+    font-family: 'Syne', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #ff6a00, #ffb347);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* HEADER */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 30px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    z-index: 10;
+}
+
+header .logo {
+    color: white;
+    font-weight: 800;
+    font-size: 1.3rem;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+header nav a {
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+/* CONTAINER */
+.login-container {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 90px 20px 30px;
+}
+
+/* RODAPÉ */
+footer {
+    text-align: center;
+    padding: 16px;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+footer a {
+    color: white;
+    text-decoration: underline;
+}
+
+/* CAIXA */
+.login-box {
+    background: white;
+    padding: 30px;
+    width: 320px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* TITULO */
+.login-box h2 {
+    margin-bottom: 10px;
+    color: #ff6a00;
+}
+
+.login-box p {
+    margin-bottom: 20px;
+    color: #666;
+}
+
+/* INPUTS */
+.login-box input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+}
+
+/* BOTÕES */
+.login-box button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    background: #ff6a00;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-box button:hover {
+    background: #e65c00;
+}
+
+/* BOTÃO SECUNDÁRIO */
+.login-box .secundario {
+    background: white;
+    color: #ff6a00;
+    border: 1px solid #ff6a00;
+}
+
+.login-box .secundario:hover {
+    background: #ff6a00;
+    color: white;
+}
+
+/* TEXTO FINAL */
+.info {
+    font-size: 12px;
+    margin-top: 15px;
+    color: #999;
+}
+
+.info a {
+    color: #ff6a00;
+    text-decoration: none;
+}
+
+.info a:hover {
+    text-decoration: underline;
+}
+
+/* MENSAGENS DE ERRO */
+.erro {
+    display: block;
+    color: #e53935;
+    font-size: 0.75rem;
+    text-align: left;
+    margin: -6px 0 8px 2px;
+    min-height: 1em;
+}
+
+/* MENSAGEM DE SUCESSO */
+.msg-sucesso {
+    display: none;
+    color: #2e7d32;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-top: 12px;
+}
+
+.msg-sucesso.visivel {
+    display: block;
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 14px 18px;
+    }
+    header nav a {
+        font-size: 0.8rem;
+    }
+    .login-box {
+        width: 100%;
+        max-width: 320px;
+    }
+}

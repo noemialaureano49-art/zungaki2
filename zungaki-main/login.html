@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Zungaki</title>
+    <meta name="description" content="Acesse sua conta Zungaki e gerencie anúncios de produtos locais com facilidade e segurança.">
+    <link rel="stylesheet" href="login.css">
+
+    <!-- Google Analytics (GA4) -->
+    <script defer src="analytics.js"></script>
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="logo">ZUNGAKI</a>
+    <nav>
+        <a href="index.html">← Voltar ao Início</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="blog.html">Blog</a>
+    </nav>
+</header>
+
+<main class="login-container">
+
+    <div class="login-box">
+
+        <h2 id="titulo-form">Zungaki</h2>
+        <p id="subtitulo-form">Entrar ou criar conta</p>
+
+        <!-- Formulário de ENTRAR -->
+        <form id="form-entrar" novalidate>
+            <input type="text" id="l-nome" placeholder="Nome">
+            <span class="erro" id="erro-l-nome"></span>
+
+            <input type="password" id="l-senha" placeholder="Senha">
+            <span class="erro" id="erro-l-senha"></span>
+
+            <button type="submit">Entrar</button>
+            <button type="button" class="secundario" onclick="mostrarCriarConta()">Criar Conta</button>
+
+            <div class="msg-sucesso" id="entrar-sucesso">Login efetuado com sucesso! A redirecionar...</div>
+        </form>
+
+        <!-- Formulário de CRIAR CONTA (oculto por padrão) -->
+        <form id="form-registar" novalidate style="display:none;">
+            <input type="text" id="r-nome" placeholder="Nome completo">
+            <span class="erro" id="erro-r-nome"></span>
+
+            <input type="email" id="r-email" placeholder="Email">
+            <span class="erro" id="erro-r-email"></span>
+
+            <input type="password" id="r-senha" placeholder="Senha (mín. 6 caracteres)">
+            <span class="erro" id="erro-r-senha"></span>
+
+            <input type="password" id="r-confirmar" placeholder="Confirmar senha">
+            <span class="erro" id="erro-r-confirmar"></span>
+
+            <button type="submit">Registar</button>
+            <button type="button" class="secundario" onclick="mostrarEntrar()">Já tenho conta</button>
+
+            <div class="msg-sucesso" id="registar-sucesso">Conta criada com sucesso! Pode agora entrar.</div>
+        </form>
+
+        <p class="info">Ao continuar, aceitas os <a href="termos.html">termos</a> do Zungaki</p>
+
+    </div>
+
+</main>
+
+<footer>
+    <p>© 2026 Zungaki · <a href="index.html">Início</a> · <a href="politica-privacidade.html">Privacidade</a> · <a href="termos.html">Termos e Condições</a></p>
+</footer>
+
+<script src="Script.js"></script>
+<script>
+    /* =========================================================
+       VALIDAÇÃO PRÓPRIA DO FORMULÁRIO DE LOGIN / REGISTO
+       (reutiliza campoVazio() e emailValido() já definidas em Script.js)
+    ========================================================= */
+
+    function senhaValida(valor) {
+        return valor.length >= 6;
+    }
+
+    /* --- Alternar entre os dois formulários --- */
+    function mostrarCriarConta() {
+        document.getElementById('form-entrar').style.display = 'none';
+        document.getElementById('form-registar').style.display = 'block';
+        document.getElementById('titulo-form').textContent = 'Criar Conta';
+        document.getElementById('subtitulo-form').textContent = 'Junte-se à Zungaki em poucos segundos';
+    }
+
+    function mostrarEntrar() {
+        document.getElementById('form-registar').style.display = 'none';
+        document.getElementById('form-entrar').style.display = 'block';
+        document.getElementById('titulo-form').textContent = 'Zungaki';
+        document.getElementById('subtitulo-form').textContent = 'Entrar ou criar conta';
+    }
+
+    /* --- Formulário: Entrar --- */
+    document.getElementById('form-entrar').addEventListener('submit', function (evento) {
+        evento.preventDefault();
+
+        var nome = document.getElementById('l-nome').value;
+        var senha = document.getElementById('l-senha').value;
+        var valido = true;
+
+        mostrarErro('erro-l-nome', '');
+        mostrarErro('erro-l-senha', '');
+
+        if (campoVazio(nome)) {
+            mostrarErro('erro-l-nome', 'Insira o seu nome.');
+            valido = false;
+        }
+        if (campoVazio(senha)) {
+            mostrarErro('erro-l-senha', 'Insira a sua senha.');
+            valido = false;
+        } else if (!senhaValida(senha)) {
+            mostrarErro('erro-l-senha', 'A senha deve ter pelo menos 6 caracteres.');
+            valido = false;
+        }
+
+        if (!valido) return;
+
+        var sucesso = document.getElementById('entrar-sucesso');
+        sucesso.classList.add('visivel');
+        setTimeout(function () {
+            window.location.href = 'index.html';
+        }, 1200);
+    });
+
+    /* --- Formulário: Registar --- */
+    document.getElementById('form-registar').addEventListener('submit', function (evento) {
+        evento.preventDefault();
+
+        var nome = document.getElementById('r-nome').value;
+        var email = document.getElementById('r-email').value;
+        var senha = document.getElementById('r-senha').value;
+        var confirmar = document.getElementById('r-confirmar').value;
+        var valido = true;
+
+        mostrarErro('erro-r-nome', '');
+        mostrarErro('erro-r-email', '');
+        mostrarErro('erro-r-senha', '');
+        mostrarErro('erro-r-confirmar', '');
+
+        if (campoVazio(nome)) {
+            mostrarErro('erro-r-nome', 'Insira o seu nome.');
+            valido = false;
+        }
+        if (campoVazio(email)) {
+            mostrarErro('erro-r-email', 'Insira o seu email.');
+            valido = false;
+        } else if (!emailValido(email)) {
+            mostrarErro('erro-r-email', 'Insira um email válido.');
+            valido = false;
+        }
+        if (campoVazio(senha)) {
+            mostrarErro('erro-r-senha', 'Crie uma senha.');
+            valido = false;
+        } else if (!senhaValida(senha)) {
+            mostrarErro('erro-r-senha', 'A senha deve ter pelo menos 6 caracteres.');
+            valido = false;
+        }
+        if (campoVazio(confirmar)) {
+            mostrarErro('erro-r-confirmar', 'Confirme a sua senha.');
+            valido = false;
+        } else if (confirmar !== senha) {
+            mostrarErro('erro-r-confirmar', 'As senhas não coincidem.');
+            valido = false;
+        }
+
+        if (!valido) return;
+
+        var sucesso = document.getElementById('registar-sucesso');
+        sucesso.classList.add('visivel');
+        setTimeout(function () {
+            document.getElementById('form-registar').reset();
+            mostrarEntrar();
+        }, 1500);
+    });
+</script>
+
+</body>
+</html>

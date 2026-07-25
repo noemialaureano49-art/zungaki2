@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa do Site - Zungaki</title>
+    <meta name="description" content="Encontre rapidamente qualquer página da plataforma Zungaki: produtos, galeria, blog, conta e informações legais.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <!-- Google Analytics (GA4) -->
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'DM Sans', sans-serif; background: #faf9f7; color: #1a1a1a; }
+
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 18px 40px; background: #fff;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+            position: sticky; top: 0; z-index: 10;
+        }
+        .logo { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; color: #ff6a00; }
+        nav a { margin-left: 24px; text-decoration: none; color: #333; font-weight: 500; }
+        nav a:hover { color: #ff6a00; }
+
+        .page-hero {
+            background: linear-gradient(135deg, #ff6a00, #ff9a3c);
+            color: white; text-align: center; padding: 50px 40px;
+        }
+        .page-hero h1 { font-family: 'Syne', sans-serif; font-size: 2.4rem; margin-bottom: 10px; }
+        .page-hero p { opacity: 0.9; }
+
+        .sitemap-container {
+            max-width: 1100px; margin: 0 auto;
+            padding: 60px 40px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .sitemap-secao {
+            background: white;
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border-top: 4px solid #ff6a00;
+        }
+
+        .sitemap-secao .icone {
+            font-size: 2rem; margin-bottom: 12px;
+        }
+
+        .sitemap-secao h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem; color: #ff6a00;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ffe8d6;
+        }
+
+        .sitemap-secao ul { list-style: none; }
+        .sitemap-secao ul li { margin-bottom: 10px; }
+        .sitemap-secao ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 0.95rem;
+            display: flex; align-items: center; gap: 8px;
+            padding: 6px 10px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        .sitemap-secao ul li a:hover {
+            background: #fff3eb;
+            color: #ff6a00;
+            padding-left: 16px;
+        }
+        .sitemap-secao ul li a::before {
+            content: '→';
+            color: #ff6a00;
+            font-size: 0.8rem;
+        }
+
+        .sitemap-secao .badge {
+            display: inline-block;
+            background: #ff6a00;
+            color: white;
+            font-size: 0.65rem;
+            padding: 2px 8px;
+            border-radius: 999px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+
+        footer {
+            background: #1a1a1a; color: #bbb;
+            text-align: center; padding: 24px;
+            font-size: 0.88rem;
+        }
+        footer a { color: #ff6a00; text-decoration: none; }
+
+        @media (max-width: 900px) {
+            .sitemap-container { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .sitemap-container { grid-template-columns: 1fr; padding: 30px 20px; }
+            header { padding: 14px 20px; flex-direction: column; gap: 8px; }
+            .page-hero h1 { font-size: 1.8rem; }
+        }
+    </style>
+    <script defer src="analytics.js"></script>
+</head>
+<body>
+
+<header>
+    <div class="logo">ZUNGAKI</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="galeria.html">Galeria</a>
+        <a href="blog.html">Blog</a>
+    </nav>
+</header>
+
+<section class="page-hero">
+    <h1>Mapa do Site</h1>
+    <p>Encontre rapidamente qualquer página da plataforma Zungaki.</p>
+</section>
+
+<div class="sitemap-container">
+
+    <div class="sitemap-secao">
+        <div class="icone">🏠</div>
+        <h3>Página Principal</h3>
+        <ul>
+            <li><a href="index.html">Homepage</a></li>
+            <li><a href="index.html#sobre">Sobre Nós</a></li>
+            <li><a href="index.html#produtos">Produtos em Destaque</a></li>
+            <li><a href="index.html#feedback">Testemunhos</a></li>
+            <li><a href="index.html#faq">Perguntas Frequentes</a></li>
+            <li><a href="index.html#redes">Redes Sociais</a></li>
+            <li><a href="index.html#contacto">Contacto</a></li>
+        </ul>
+    </div>
+
+    <div class="sitemap-secao">
+        <div class="icone">🛒</div>
+        <h3>Loja & Produtos</h3>
+        <ul>
+            <li><a href="produtos.html">Todos os Produtos</a></li>
+            <li><a href="produtos.html">Frutas & Legumes</a></li>
+            <li><a href="produtos.html">Comidas & Doces</a></li>
+            <li><a href="produtos.html">Moda & Calçado</a></li>
+            <li><a href="produtos.html">Outros Produtos</a></li>
+        </ul>
+    </div>
+
+    <div class="sitemap-secao">
+        <div class="icone">🖼️</div>
+        <h3>Galeria</h3>
+        <ul>
+            <li><a href="galeria.html">Galeria Completa</a></li>
+            <li><a href="galeria.html">Frutas & Legumes</a></li>
+            <li><a href="galeria.html">Comidas</a></li>
+            <li><a href="galeria.html">Moda</a></li>
+            <li><a href="galeria.html">Vendedores</a></li>
+        </ul>
+    </div>
+
+    <div class="sitemap-secao">
+        <div class="icone">📝</div>
+        <h3>Blog</h3>
+        <ul>
+            <li><a href="blog.html">Todos os Artigos</a></li>
+            <li><a href="blog.html">Dicas de Venda</a></li>
+            <li><a href="blog.html">Mercado Local</a></li>
+            <li><a href="blog.html">Tecnologia</a></li>
+            <li><a href="blog.html">Empreendedorismo</a></li>
+            <li><a href="newsletter.html">Newsletter <span class="badge">Novo</span></a></li>
+        </ul>
+    </div>
+
+    <div class="sitemap-secao">
+        <div class="icone">👤</div>
+        <h3>Conta & Acesso</h3>
+        <ul>
+            <li><a href="login.html">Entrar / Login</a></li>
+            <li><a href="login.html">Criar Conta</a></li>
+            <li><a href="newsletter.html">Subscrever Newsletter</a></li>
+        </ul>
+    </div>
+
+    <div class="sitemap-secao">
+        <div class="icone">⚖️</div>
+        <h3>Legal & Informações</h3>
+        <ul>
+            <li><a href="politica-privacidade.html">Política de Privacidade</a></li>
+            <li><a href="termos.html">Termos e Condições</a></li>
+            <li><a href="sitemap.html">Mapa do Site</a></li>
+            <li><a href="404.html">Página 404</a></li>
+        </ul>
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 Zungaki · <a href="politica-privacidade.html">Privacidade</a> · <a href="termos.html">Termos</a> · <a href="index.html">Início</a></p>
+</footer>
+
+</body>
+</html>

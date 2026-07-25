@@ -1,0 +1,356 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zungaki - Mercado Digital Local de Luanda | Compre e Venda Perto de Si</title>
+    <meta name="description" content="Zungaki é o mercado digital que liga vendedores e compradores em Luanda. Encontre produtos frescos e locais, fale direto com o vendedor via WhatsApp.">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Analytics (GA4) - substitui G-XXXXXXXXXX pelo teu ID de medição -->
+    <script defer src="analytics.js"></script>
+</head>
+<body>
+
+<!-- POP-UP TERMOS E PRIVACIDADE (CSS puro) -->
+<input type="checkbox" id="fechar-popup" class="popup-toggle">
+<div class="popup-overlay">
+    <div class="popup-box">
+        <h2>Termos de uso e Política de Privacidade</h2>
+        <p>
+            Ao continuar a navegar no site da Zungaki, você concorda com os nossos
+            <a href="termos.html" target="_blank" rel="noopener">Termos de Uso</a>
+            e com a nossa
+            <a href="politica-privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a>.
+            Usamos cookies e dados de navegação apenas para melhorar a sua experiência na plataforma.
+        </p>
+        <label for="fechar-popup" class="btn-popup">Aceitar e continuar</label>
+    </div>
+</div>
+
+<!-- NAVBAR -->
+<header>
+    <div class="logo">ZUNGAKI</div>
+
+    <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav id="nav-menu" aria-label="Menu principal">
+        <a href="index.html">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="galeria.html">Galeria</a>
+        <a href="blog.html">Blog</a>
+        <a href="#contacto">Contacto</a>
+        <a href="login.html">Assinar</a>
+    </nav>
+
+    <button id="dark-mode-toggle" class="dark-toggle" aria-label="Ativar modo escuro">
+        <i class="icon-lua">🌙</i>
+    </button>
+</header>
+
+<main>
+    <!-- HERO -->
+    <section class="centro">
+        <div class="centro-text">
+            <h1>O mercado local<br> na palma da sua mão</h1>
+            <p>A Zungaki ajuda vendedores e clientes a se encontrarem rapidamente, com ofertas reais, fotos de qualidade e atendimento direto.</p>
+            <button class="btn-primario"><a href="login.html">Saiba mais</a></button>
+        </div>
+
+        <div class="centro-img">
+            <img src="assets/images/centro.jpg" alt="centro">
+        </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section class="sobre" id="sobre">
+        <div class="container-sobre">
+            <h2>A plataforma que aproxima o seu negócio ao cliente certo</h2>
+            <p>Com Zungaki, vendedores aumentam vendas e compradores encontram produtos locais frescos, seguros e com atendimento imediato via WhatsApp.</p>
+        </div>
+    </section>
+
+    <section class="vantagens">
+        <h2>O que faz a Zungaki ser a escolha certa?</h2>
+        <div class="vantagens-grid">
+            <article>
+                <h3>Foco no cliente</h3>
+                <p>Nosso site é pensado para ajudar quem compra a encontrar ofertas relevantes em poucos segundos.</p>
+            </article>
+            <article>
+                <h3>Experiência simples</h3>
+                <p>Menu direto, navegação clara e acesso rápido aos produtos mais procurados.</p>
+            </article>
+            <article>
+                <h3>Rede social integrada</h3>
+                <p>Conexão imediata com vendedores por WhatsApp e presença nas redes para ampliar o alcance.</p>
+            </article>
+            <article>
+                <h3>Identidade visual forte</h3>
+                <p>Cores quentes, imagens atraentes e um layout que transmite confiança e profissionalismo.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- CATEGORIAS -->
+    <section class="categorias">
+        <h2>O MERCADO <span>Digital</span></h2>
+        <div class="grid">
+            <div class="card">Sapatos</div>
+            <div class="card">Roupa</div>
+            <div class="card">Verduras</div>
+            <div class="card">Comidas</div>
+            <div class="card">Medicamentos</div>
+            <div class="card">Extras</div>
+        </div>
+    </section>
+
+    <!-- PRODUTOS / CARROSSEL -->
+    <section class="produtos" id="produtos">
+        <h2><a href="produtos.html">Produtos</a></h2>
+
+        <div class="carousel" id="carousel-produtos">
+            <button class="carousel-btn carousel-prev" aria-label="Produto anterior">&#10094;</button>
+
+            <div class="carousel-track-container">
+                <ul class="carousel-track">
+                    <li class="produto">
+                        <a href="produtos.html"><img src="assets/images/morango.jpg" alt="Morango"></a>
+                        <h3>Morango</h3>
+                        <p>Preço: 2500 Kz</p>
+                    </li>
+                    <li class="produto">
+                        <a href="produtos.html"><img src="assets/images/sapato.jpg" alt="Doces Ló"></a>
+                        <h3>Doces Ló</h3>
+                        <p>Preço: 2500 Kz</p>
+                    </li>
+                    <li class="produto">
+                        <a href="produtos.html"><img src="assets/images/fuba.jpg" alt="Fuba de Bombó"></a>
+                        <h3>Fuba de Bombó</h3>
+                        <p>Preço: 2500 Kz</p>
+                    </li>
+                    <li class="produto">
+                        <a href="produtos.html"><img src="assets/images/comida4.jpg" alt="Tomates"></a>
+                        <h3>Comida do dia</h3>
+                        <p>Preço: 5600 Kz</p>
+                    </li>
+                     <li class="produto">
+                        <a href="produtos.html"><img src="assets/images/comida2.jpg" alt="Tomates"></a>
+                        <h3>Comida do dia</h3>
+                        <p>Preço: 5600 Kz</p>
+                    </li>
+                    <li class="produto">
+                        <a href="produtos.html"><img src="assets/images/roupa2.jpg" alt="Doces Ló"></a>
+                        <h3>roupas</h3>
+                        <p>Preço: 2500 Kz</p>
+                    </li>
+                    <li class="produto">
+                        <a href="produtos.html"><img src="assets/images/roupa3.jpg" alt="Doces Ló"></a>
+                        <h3>roupas</h3>
+                        <p>Preço: 2500 Kz</p>
+                    </li>
+                    <li class="produto">
+                        <a href="produtos.html"><img src="assets/images/roupa4.jpg" alt="Doces Ló"></a>
+                        <h3>roupas</h3>
+                        <p>Preço: 2500 Kz</p>
+                    </li>
+                    </li>
+                </ul>
+            </div>
+
+            <button class="carousel-btn carousel-next" aria-label="Próximo produto">&#10095;</button>
+        </div>
+        <div class="carousel-dots" id="carousel-dots"></div>
+    </section>
+
+    <!-- FEEDBACK -->
+    <section class="feedback" id="feedback">
+        <div class="feedback-header">
+            <h2>Feedback</h2>
+            <p>Comentários reais de vendedores que já estão beneficiando a sua banca na plataforma.</p>
+        </div>
+
+        <div class="comentarios-grid">
+            <div class="comentario">
+                <img src="assets/images/mama.jpg" alt="Foto do vendedor">
+                <div>
+                    <p>"A minha bancada agora é mais conhecida e os clientes encontram os meus produtos mais rápido."</p>
+                    <p><strong>Tânia Fernando</strong></p>
+                </div>
+            </div>
+
+            <div class="comentario">
+                <img src="assets/images/paivendedor.jpg" alt="Foto do vendedor">
+                <div>
+                    <p>"Com a Zungaki, passei a receber mais pedidos e tenho mais tempo para atender cada cliente."</p>
+                    <p><strong>Adão Ngunza</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <div class="faq-header">
+            <h2>Perguntas Frequentes</h2>
+            <p>Aqui estão as respostas rápidas para ajudar compradores e vendedores a aproveitar ao máximo a plataforma Zungaki.</p>
+        </div>
+
+        <div class="faq-grid">
+            <div class="pergunta">
+                <h4>Como faço para comprar um produto?</h4>
+                <p>Encontre a zungueira desejada, consulte o anúncio e entre em contato via WhatsApp para combinar o pedido e a entrega.</p>
+            </div>
+            <div class="pergunta">
+                <h4>Como posso vender meus produtos?</h4>
+                <p>Cadastre-se, complete o perfil com informações reais e publique seus produtos com descrição, preço e fotos.</p>
+            </div>
+            <div class="pergunta">
+                <h4>Como funciona o pagamento?</h4>
+                <p>A Zungaki conecta comprador e vendedor. O pagamento é combinado diretamente entre as partes e pode ser feito em dinheiro ou transferência.</p>
+            </div>
+            <div class="pergunta">
+                <h4>Como atualizo meus dados de contato?</h4>
+                <p>Acesse seu perfil, edite os detalhes de contato e salve as alterações para garantir que os clientes encontrem você facilmente.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter">
+        <div class="newsletter-box">
+            <p class="newsletter-label">Newsletter</p>
+            <h2>Receba Dicas & Ofertas Exclusivas</h2>
+            <p class="newsletter-desc">Junte-se a mais de 340 vendedores e compradores que recebem as melhores dicas do mercado local de Luanda.</p>
+            <form id="form-newsletter" novalidate>
+                <div class="newsletter-campo">
+                    <input type="email" placeholder="O seu email..." id="nl-email" name="nl-email">
+                    <button type="submit">Subscrever</button>
+                </div>
+                <span class="erro" id="erro-nl-email"></span>
+            </form>
+            <p class="newsletter-nota">Sem spam. <a href="politica-privacidade.html">Política de Privacidade</a>.</p>
+            <div id="nl-sucesso" class="msg-sucesso">Subscrito com sucesso! Obrigado.</div>
+        </div>
+    </section>
+
+    <!-- REDES SOCIAIS -->
+    <section class="redes" id="redes">
+        <div class="redes-conteudo">
+            <h2>Conecte-se com a Zungaki</h2>
+            <p>Siga nossas redes e fale direto com vendedores para ofertas rápidas e produtos de qualidade.</p>
+            <div class="redes-links">
+                <a href="https://wa.me/244923000000" target="_blank" rel="noopener">WhatsApp</a>
+                <a href="#" target="_blank" rel="noopener">Instagram</a>
+                <a href="#" target="_blank" rel="noopener">Facebook</a>
+            </div>
+
+            <p class="partilhar-titulo">Partilhar o site</p>
+            <div class="partilhar-links">
+                <button type="button" onclick="partilharFacebook()" aria-label="Partilhar no Facebook">Facebook</button>
+                <button type="button" onclick="partilharWhatsApp()" aria-label="Partilhar no WhatsApp">WhatsApp</button>
+                <button type="button" onclick="partilharTwitter()" aria-label="Partilhar no X">X / Twitter</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO / FORMULÁRIO / MAPA -->
+    <section class="contacto-secao" id="contacto">
+        <div class="contacto-grid">
+            <div class="contacto-form-box">
+                <h2>Fale connosco</h2>
+                <form id="form-contacto" novalidate>
+                    <div class="campo">
+                        <label for="c-nome">Nome</label>
+                        <input type="text" id="c-nome" name="nome">
+                        <span class="erro" id="erro-nome"></span>
+                    </div>
+                    <div class="campo">
+                        <label for="c-email">Email</label>
+                        <input type="email" id="c-email" name="email">
+                        <span class="erro" id="erro-email"></span>
+                    </div>
+                    <div class="campo">
+                        <label for="c-telefone">Telefone</label>
+                        <input type="text" id="c-telefone" name="telefone" placeholder="9XX XXX XXX">
+                        <span class="erro" id="erro-telefone"></span>
+                    </div>
+                    <div class="campo">
+                        <label for="c-mensagem">Mensagem</label>
+                        <textarea id="c-mensagem" name="mensagem" rows="4"></textarea>
+                        <span class="erro" id="erro-mensagem"></span>
+                    </div>
+                    <button type="submit">Enviar mensagem</button>
+                    <div id="contacto-sucesso" class="msg-sucesso">Mensagem enviada com sucesso!</div>
+                </form>
+            </div>
+
+            <div class="contacto-mapa-box">
+                <h2>Onde estamos</h2>
+                <div id="mapa-google" role="application" aria-label="Mapa - Zungaki, Kilamba, Luanda">
+                    <p class="mapa-fallback">A carregar mapa...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="rodape">
+    <div class="rodape-grid">
+        <div>
+            <h3>ZUNGAKI</h3>
+            <p>O seu mercado digital local com ofertas frescas e atendimento rápido.</p>
+        </div>
+
+        <div>
+            <h4>Mapa do site</h4>
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="produtos.html">Produtos</a></li>
+                <li><a href="galeria.html">Galeria</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="newsletter.html">Newsletter</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="sitemap.html">Mapa do Site</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h4>Redes sociais</h4>
+            <ul>
+                <li><a href="https://wa.me/244923000000" target="_blank" rel="noopener">WhatsApp</a></li>
+                <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
+                <li><a href="#" target="_blank" rel="noopener">Facebook</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h4>Contacto</h4>
+            <p>Telefone: 900-000-000</p>
+            <p>Email: zungaki@gmail.co</p>
+            <p>Luanda, Kilamba</p>
+            <br>
+            <a href="politica-privacidade.html">Política de Privacidade</a><br>
+            <a href="termos.html">Termos e Condições</a>
+        </div>
+    </div>
+    <p class="direitos">© 2026 Zungaki. Todos os direitos reservados. · <a href="sitemap.html">Mapa do Site</a></p>
+</footer>
+
+<!-- BOTÃO VOLTAR AO TOPO -->
+<button id="btn-topo" class="btn-topo" aria-label="Voltar ao topo">&#8593;</button>
+
+<script src="Script.js"></script>
+
+<!-- API do Google Maps (JavaScript API oficial) -->
+<!-- IMPORTANTE: troca "COLOCA_AQUI_A_TUA_CHAVE_API" pela tua chave real do Google Cloud Console. -->
+<!-- Como obter a chave: console.cloud.google.com -> criar projeto -> ativar "Maps JavaScript API" -> Credenciais -> Criar chave de API. -->
+<!-- Sem uma chave válida o mapa não carrega e aparece a mensagem "A carregar mapa..." -->
+<script src="https://maps.googleapis.com/maps/api/js?key=G-T9DWJJH9FR" async defer></script>
+
+</body>
+</html>
